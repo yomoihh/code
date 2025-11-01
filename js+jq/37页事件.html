@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12baoyouquan</title>
+</head>
+<body onmouseover="first()">
+    <input type="text" onmouseout="first()">
+    <input type="text" onkeydown="showKey(event)">
+    <input type="text" id="changeInput" onchange="showChange()" placeholder="改变我试试">
+    <div id="onmouseover"></div>
+    <div id="onkeydown"></div>
+    <div id="onchange"></div>
+    <script type="text/javascript">
+        function first(){
+            var onmouseover = "";
+            for(var j = 1; j <= 5; j++){
+                onmouseover += "鼠标移入" + j + "次<br>";
+            }
+            document.getElementById("onmouseover").innerHTML = onmouseover;
+        }
+        function showKey(e){
+            var onkeydown = "你按下了：" + e.key;
+            document.getElementById("onkeydown").innerHTML = onkeydown;
+        }
+        function showChange(){
+            var input = document.getElementById("changeInput");
+            input.style.backgroundColor = "red";
+            document.getElementById("onchange").innerHTML = "你已修改内容！";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>12包佑泉</title>
+    <script>
+        function Numbers() {
+            var sum = 0;
+            for (var i = 0; i < 5; i++) {
+                var num = parseFloat(prompt("请输入一个数字:"));
+                sum += num;
+            }
+            document.write("五个数求和: " + sum);
+        }
+    </script>
+</head>
+<body>
+    <h1>五个数求和</h1>
+    <button onclick="Numbers()">计算总和</button>
+</body>
+</html>
