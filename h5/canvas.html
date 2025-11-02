@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas标签定义图形，比如图表和其他图像，您必须使用脚本来绘制图形。</title>
+</head>
+<body>
+   <!-- 第1个 canvas：用于演示填充矩形（fillRect） -->
+   <canvas id="mycanvas" width="200" height="100" style="border: 2px solid #000000;"></canvas>
+
+   <!-- 第2个 canvas：用于演示绘制直线（moveTo/lineTo + stroke） -->
+   <canvas id="mycanvas2" width="200" height="100" style="border: 2px solid #000000;"></canvas>
+
+   <!-- 第3个 canvas：用于演示绘制圆形（arc） -->
+   <canvas id="mycanvas3" width="200" height="100" style="border: 1px solid #faf8f8;"></canvas>
+
+   <!-- 第4个 canvas：用于演示填充文本（fillText） -->
+   <canvas id="mycanvas4" width="200" height="100" style="border: 1px solid #faf8f8;"></canvas>
+
+   <!-- 第5个 canvas：用于演示描边文本（strokeText） -->
+   <canvas id="mycanvas5" width="200" height="100" style="border: 1px solid #171717;"></canvas>
+       <!-- 如果浏览器不支持 canvas，会显示这里的备用文本 -->
+   <canvas id="mycanvas6" width="200" height="100" style="border: 1px solid #171717;"></canvas>
+   <canvas id="mycanvas7" width="200" height="100" style="border: 1px solid #171717;"></canvas>
+   <canvas id="mycanvas8" width="100" height="500" style="border: 1px solid #171717;" ></canvas>
+   <img id="myimg" src="/h5/图片/3.webp" style="display:none;">
+   <script>
+        /*
+         下面的脚本为每个 canvas 获取 2D 上下文，并演示不同绘制方法。
+         我们使用不同的变量名（c1/ctx1, c2/ctx2 ...）来避免相互覆盖，便于调试。
+        */
+
+        // ---------- 第1块：填充矩形 ----------
+        // 获取第1个 canvas 元素（通过 id 查找）
+        var c1 = document.getElementById("mycanvas");
+        // 获取 2D 绘图上下文对象（CanvasRenderingContext2D）
+        var ctx1 = c1.getContext("2d");
+        // 设置填充颜色（可以是颜色名、十六进制或 rgba）
+        ctx1.fillStyle = "RED";
+        // 绘制一个填充矩形：参数为 (x, y, width, height)
+        ctx1.fillRect(20, 0, 150, 75);
+
+        // ---------- 第2块：绘制直线 ----------
+        // 获取第2个 canvas 与其绘图上下文
+        var c2 = document.getElementById("mycanvas2");
+        var ctx2 = c2.getContext("2d");
+        // beginPath 开始一条新路径（可选，但推荐在绘制独立路径前调用）
+        ctx2.beginPath();
+        // moveTo 将画笔移动到起点 (0,0)
+        ctx2.moveTo(0, 0);
+        // lineTo 在当前点绘制一条到 (200,100) 的直线
+        ctx2.lineTo(200, 100);
+        // stroke 按当前样式描边路径（绘制直线）
+        ctx2.stroke();
+
+        // ---------- 第3块：绘制圆 （arc） ----------
+        // 获取第3个 canvas 与其上下文
+        var c3 = document.getElementById("mycanvas3");
+        var ctx3 = c3.getContext("2d");
+        // beginPath 开始新路径，避免与之前路径混淆
+        ctx3.beginPath();
+        // arc(cx, cy, r, startAngle, endAngle)
+        // 这里 cx=90, cy=50, r=40, 从 0 到 2*Math.PI 绘制完整圆
+        ctx3.arc(90, 50, 40, 0, 2 * Math.PI);
+        // 描边圆形
+        ctx3.stroke();
+
+        // ---------- 第4块：绘制填充文本（fillText） ----------
+        var c4 = document.getElementById("mycanvas4");
+        var ctx4 = c4.getContext("2d");
+        // 设置字体样式： '大小 字体名'，与 CSS 字体格式一致
+        ctx4.font = "30px Arial";
+        // fillText(text, x, y) 在 (10,50) 位置绘制填充文本
+        ctx4.fillText("Hello World", 10, 50);
+
+        // ---------- 第5块：绘制描边文本（strokeText） ----------
+        var c5 = document.getElementById("mycanvas5");
+        var ctx5 = c5.getContext("2d");
+        // 同样设置字体以匹配 fillText 的显示效果
+        ctx5.font = "30px Arial";
+        // 设置描边颜色（strokeStyle）和线宽（lineWidth），确保描边清晰可见
+        ctx5.strokeStyle = "#000"; // 黑色描边
+        ctx5.lineWidth = 1; // 描边宽度为 1 像素
+        // strokeText(text, x, y) 在 (10,50) 位置绘制描边文本
+        ctx5.strokeText("你好", 10, 50);
+
+        var c=document.getElementById("mycanvas6");
+        var ctx=c.getContext("2d");
+        // 创建渐变
+        var grd=ctx.createLinearGradient(0,0,200,0);
+        grd.addColorStop(0,"red");
+        grd.addColorStop(1,"white");
+        // 填充渐变
+        ctx.fillStyle=grd;
+        ctx.fillRect(0,0,200,100);
+
+        var c=document.getElementById("mycanvas7");
+        var ctx=c.getContext("2d");
+        // 创建渐变
+        var grd=ctx.createRadialGradient(100,50,20,100,50,80);
+        grd.addColorStop(0,"red");
+        grd.addColorStop(1,"white");
+        // 填充渐变
+        ctx.fillStyle=grd;
+        ctx.fillRect(0,0,200,100);
+
+        // 获取第8个 canvas 与其上下文（专门用于演示 drawImage）
+        var c8 = document.getElementById("mycanvas8");
+        var ctx8 = c8.getContext("2d");
+        // 获取页面中的 img 元素（注意：图片必须存在且已加载才能被 drawImage 绘制）
+        var img = document.getElementById("myimg");
+
+        // 封装绘制函数，便于在 onload 或已加载时调用
+        function drawMyImage() {
+            try {
+                // 将图片绘制到画布上的 (10,10) 位置
+                ctx8.drawImage(img, 10, 10);
+            } catch (e) {
+                // 如果发生异常（例如跨域或参数错误），在控制台打印错误信息
+                console.error('drawImage 失败：', e);
+            }
+        }
+
+        // 如果图片已加载完成（浏览器缓存或同步加载），直接绘制
+        // naturalWidth 为 0 通常表示图片加载失败或不存在
+        if (img.complete && img.naturalWidth !== 0) {
+            drawMyImage();
+        } else {
+            // 图片尚未加载，使用 onload 回调在加载完成后绘制
+            img.onload = function() {
+                drawMyImage();
+            };
+            // 加入 onerror 以便在图片加载失败时能在控制台看到提示
+            img.onerror = function() {
+                console.error('图片加载失败，请检查路径或文件是否存在：', img.src);
+            };
+        }
+   </script>
+</body>
+</html>
