@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12baoyouquan</title>
+</head>
+<style type="text/CSS">
+    h3 {padding: 5px}
+    p {display: none;}
+    h4 {padding: 5px}
+</style>
+<script src="jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+     $("h3").click(function(){
+        $("h3").css("background-color","yellow").next().
+         css("display","block");
+     });
+  });
+ document.addEventListener("DOMContentLoaded", function() {
+    var h4 = document.querySelector("h4");
+    h4.onclick = function() {
+        h4.style.backgroundColor = "red";
+        h4.nextElementSibling.style.display = "block";
+    };
+});
+
+</script>
+<body>
+    <h3>你要干什么!</h3>
+    <p>没什么东西</p>
+    <h4>你要干什么!</h4>
+    <p>不干什么</p>
+</body>
+</html>
