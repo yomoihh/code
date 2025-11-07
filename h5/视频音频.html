@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+    <button onclick="playpause()">播放/暂停</button>
+    <button onclick="makebig()">放大</button>
+    <button onclick="makesmall()">缩小</button>
+    <button onclick="makehalf()">还原</button>
+    <button onclick="makenormal()">普通</button>
+    <br>
+    <video width="320" height="240" controls id="video1">
+        <source src="/h5/图片/1.mp4" type="video/mp4">
+    </video>
+    </div>
+    <script>
+    var myvideo=document.getElementById("video1");
+    function playpause(){
+        if(myvideo.paused)
+        myvideo.play();
+        else
+        myvideo.pause();
+    }
+    function makebig(){
+        myvideo.width+=100;
+        myvideo.height+=100;
+    }
+    function makesmall(){
+        myvideo.width-=100;
+        myvideo.height-=100;
+    }
+    function makehalf(){
+        myvideo.width=-100;
+        myvideo.height=-100;
+    }
+    function makenormal(){
+       myvideo.width=320;
+       myvideo.height=240;
+    }
+    </script>
+</body>
+</html>
