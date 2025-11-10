@@ -10,7 +10,7 @@
      $(document).ready(function(){
         $("div").click(function(){
             $("div").css("background-color","yellow");
-            $("img").css("display","block");
+            $("img").attr("src", "/js+jq/黑神话悟空.jpg").show();
         });
     });
     $(document).ready(function(){
@@ -23,6 +23,13 @@
             $("h3").css("background-color","red");
         });
     });
+    $(document).ready(function(){
+        $("dd").click(function(){
+            $("dd").css("font-size","20px");
+            $("dd").css("background-color","blue");
+        });
+    });
+
 </script>
 <body>
  <div  class="button">显示图片</div>
@@ -30,8 +37,10 @@
  <h3>点击变红背景</h3>
  <p>点击放大字体</p>
  <div>&nbsp;&nbsp;</div>
+ <dd>123123211321321321321</dd>
+ <dd>321321321321321321321</dd>
+ <dd>213213213213213213213</dd> 
  <div>文字是人类记录和传播语言的书写符号系统中文名为英文对应script或writing根据单字记录的语言单位不同表音文字分为音素文字如拉丁字母和音节文字如日文假名），表意文字则直接对应语义单位（如现代汉字</div>
-<img  src="/js+jq/圆形猪头.webp" style="display:none;">
-
+<img src="/js+jq/黑神话悟空.jpg" style="display:none;">
 </body>
 </html>
