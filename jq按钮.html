@@ -1,46 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<script type="text/javascript" src="js+jq/jquery.js"></script>
-<script type="text/javascript">
-     $(document).ready(function(){
-        $("div").click(function(){
-            $("div").css("background-color","yellow");
-            $("img").attr("src", "/js+jq/黑神话悟空.jpg").show();
-        });
-    });
-    $(document).ready(function(){
-        $("p").click(function(){
-            $("p").css("font-size","30px")  ;
-        });
-    });
-    $(document).ready(function(){
-        $("h3").click(function(){
-            $("h3").css("background-color","red");
-        });
-    });
-    $(document).ready(function(){
-        $("dd").click(function(){
-            $("dd").css("font-size","20px");
-            $("dd").css("background-color","blue");
-        });
+    <title>选择器</title>
+    <script src="/js+jq/jquery.js"></script>
+    <script type="text/javascript">
+$(function(){
+    $("h2").click(function(e){
+        $("h3").css("background-color","red");
     });
 
+    $("dt").click(function(e){
+        $("dd").css("background-color","blue");
+    });
+
+    $(".title").click(function(e){
+        $(".title").css("background-color","green");
+    });
+
+    $("#box").click(function(e){
+        $("#box").css("background-color","#b2fdb8");
+    });
+
+    $("div p").click(function(e){
+        $("div p").css({"font-size":"24px", "background-color":"#f9c2ff"});
+    });
+
+    $("dd").click(function(e){
+        $("*").css({"background-color":"#ffd","font-size":"18px"});
+    });
+});
 </script>
+      
+    </script>
+</head>
 <body>
- <div  class="button">显示图片</div>
- <h3>12包佑泉</h3>
- <h3>点击变红背景</h3>
- <p>点击放大字体</p>
- <div>&nbsp;&nbsp;</div>
- <dd>123123211321321321321</dd>
- <dd>321321321321321321321</dd>
- <dd>213213213213213213213</dd> 
- <div>文字是人类记录和传播语言的书写符号系统中文名为英文对应script或writing根据单字记录的语言单位不同表音文字分为音素文字如拉丁字母和音节文字如日文假名），表意文字则直接对应语义单位（如现代汉字</div>
-<img src="/js+jq/黑神话悟空.jpg" style="display:none;">
+    <div class="control-group">
+        <h1>不同选择器</h1>
+        <p>点击下方按钮触发对应元素的交互效果：</p>
+        <button onclick="$('h2').trigger('click')">触发h2标题效果</button>
+        <button onclick="$('dt').trigger('click')">触发dt标签效果</button>
+        <button onclick="$('.title').trigger('click')">触发class为title的元素效果</button>
+        <button onclick="$('#box').trigger('click')">触发id为box的元素效果</button>
+        <button onclick="$('div p').trigger('click')">触发div下的p标签效果</button>
+        <button onclick="$('*').not('body, html').trigger('click')">触发所有元素效果</button>
+    </div>
+
+    <div id="box">
+        <div class="element-group">
+            <h2 class="title">这是一个h2标题</h2>
+            <h3 class="title">这是一个h3标题</h3>
+            <h3>这是另一个h3标题</h3>
+            <p class="code">&lt;div id="box"&gt; 容器内的标题元素</p>
+        </div>
+
+        <div class="element-group">
+            <h4>图片</h4>
+            <img src="/h5/图片/1.jpg" alt="猪头头像" class="avatar" width="200" height="200">
+            <img src="/h5/图片/1.jpg" alt="猪头头像" class="avatar" width="200" height="200">
+        </div>
+
+    
+        <div class="element-group">
+            <dl>
+                <dt>定义术语1</dt>
+                <dd>术语1的解释</dd>
+                <dt>定义术语2</dt>
+                <dd>术语2的解释</dd>
+            </dl>
+        </div>
+    </div>
 </body>
 </html>
